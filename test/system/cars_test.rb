@@ -21,7 +21,7 @@ class CarsTest < ApplicationSystemTestCase
     fill_in "Model", with: @car.model
     click_on "Create Car"
 
-    assert_text "Car was successfully created"
+    assert_text "Car created!"
     click_on "Back"
   end
 
@@ -36,16 +36,16 @@ class CarsTest < ApplicationSystemTestCase
     fill_in "Model", with: @car.model
     click_on "Update Car"
 
-    assert_text "Car was successfully updated"
+    assert_text "Car updated!"
     click_on "Back"
   end
 
   test "destroying a Car" do
     visit cars_url
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on "Delete Car", match: :first
     end
 
-    assert_text "Car was successfully destroyed"
+    assert_text "Car deleted!"
   end
 end
