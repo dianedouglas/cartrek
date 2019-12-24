@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  model: MyString
+  make: MyString
+  color: MyString
+  mileage: 1
+  is_for_sale: false
+
+two:
+  model: MyString
+  make: MyString
+  color: MyString
+  mileage: 1
+  is_for_sale: false
