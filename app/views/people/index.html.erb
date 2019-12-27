@@ -1,31 +1,34 @@
-<p id="notice"><%= notice %></p>
+<header class="masthead">
+  <div class="container d-flex h-100 align-items-center">
+    <p id="notice"><%= notice %></p>
 
-<h1>People</h1>
+    <div class="mx-auto text-center">
+      <h1 class="mx-auto my-0 p-5">Owners</h1>
+      <%= link_to 'New Owner', new_person_path, :class => "btn btn-primary js-scroll-trigger" %>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone number</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone number</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @people.each do |person| %>
-      <tr>
-        <td><%= person.name %></td>
-        <td><%= person.email %></td>
-        <td><%= person.phone_number %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Person', new_person_path %>
+      <tbody>
+        <% @people.each do |person| %>
+          <tr>
+            <td><%= person.name %></td>
+            <td><%= person.email %></td>
+            <td><%= person.phone_number %></td>
+            <td><%= link_to 'Details', person %></td>
+            <td><%= link_to 'Edit', edit_person_path(person) %></td>
+            <td><%= link_to 'Delete', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</header>
