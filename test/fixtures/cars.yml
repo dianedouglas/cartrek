@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  model: MyString
-  make: MyString
-  color: MyString
-  mileage: 1
+  model: Chevrolet
+  make: Impala
+  color: Black
+  mileage: 100000
   is_for_sale: false
 
 two:
-  model: MyString
-  make: MyString
-  color: MyString
-  mileage: 1
-  is_for_sale: false
+  model: Dodge
+  make: Charger
+  color: Red
+  mileage: 3000
+  is_for_sale: true
