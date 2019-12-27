@@ -1,5 +1,13 @@
-<h1>New Person</h1>
+<header class="masthead">
+  <div class="container d-flex h-100 align-items-center">
+    <div class="mx-auto text-center">
+      <h1 class="mx-auto my-0 p-5">New Owner</h1>
 
-<%= render 'form', person: @person %>
+      <div class="mx-auto p-5">
+        <%= render 'form', person: @person %>
+      </div>
 
-<%= link_to 'Back', people_path %>
+      <%= link_to 'Back', people_path %>
+    </div>
+  </div>
+</header>
