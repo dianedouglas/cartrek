@@ -17,3 +17,15 @@
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
+
+<p>
+  <strong>Ownership:</strong>
+</p>
+
+<% @person.cars.each do |car| %>
+  <p>
+    <%= link_to "#{car.model} #{car.make} ", car_path(car) %>
+  </p>
+<% end %>
+
+<%= link_to 'Add New Car', new_car_path(:car => @car) %>

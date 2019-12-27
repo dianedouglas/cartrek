@@ -18,14 +18,8 @@ class PeopleTest < ApplicationSystemTestCase
     visit person_url(@person)
     assert_text @car.model
     assert_text @car.make
-    assert_text @car.color
-    assert_text @car.mileage
-    assert_text @car.is_for_sale
     assert_text @car2.model
     assert_text @car2.make
-    assert_text @car2.color
-    assert_text @car2.mileage
-    assert_text @car2.is_for_sale
   end
 
   test "creating a Person" do
@@ -49,12 +43,11 @@ class PeopleTest < ApplicationSystemTestCase
     click_on "Add New Car"
     assert_text "New Car"
 
-    fill_in "Color", with: 'Violet'
+    fill_in "Color", with: 'Black'
     check "Is for sale"
     fill_in "Make", with: 'Chevrolet'
     fill_in "Mileage", with: 1333333
     fill_in "Model", with: 'Impala'
-
     click_on "Create Car"
     assert_text "Car was successfully created."
   end
@@ -67,8 +60,8 @@ class PeopleTest < ApplicationSystemTestCase
     click_on "Add New Car"
     assert_text "New Car"
 
-    fill_in "Color", with: 'Violet'
-    check "Is for sale"
+    fill_in "Color", with: 'Black'
+    # have one test with a car not on sale.
     fill_in "Make", with: 'Chevrolet'
     fill_in "Mileage", with: 1333333
     fill_in "Model", with: 'Impala'
