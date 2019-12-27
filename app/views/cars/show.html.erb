@@ -27,4 +27,21 @@
 
 <%= link_to 'Edit', edit_car_path(@car) %> |
 <%= link_to 'Back', cars_path %>
+
+<p>
+  <strong>Ownership:</strong>
+</p>
+
+<% @car.people.each do |owner| %>
+  <p>
+    <%= link_to owner.name, person_path(owner) %>
+  </p>
+  <p>
+    Email: <%= owner.email %>
+  </p>
+  <p>
+    Phone Number: <%= owner.phone_number %>
+  </p>
+<% end %>
+
 <%= link_to 'Add New Owner', new_person_path(:car => @car) %>
