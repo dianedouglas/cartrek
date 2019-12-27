@@ -1,8 +1,15 @@
-<h1>Editing Car</h1>
+<header class="masthead">
+  <div class="container d-flex h-100 align-items-center">
+    <div class="mx-auto text-center">
+      <h1 class="mx-auto my-0 p-5">Editing Car</h1>
 
-<%= render 'form', car: @car %>
+      <div class="mx-auto p-5">
+        <%= render 'form', car: @car %>
+      </div>
 
-<%= link_to 'Show', @car %> |
-<%= link_to 'Back', cars_path %>
-
-<%= link_to 'Add New Owner', new_person_path(:car => @car) %>
+      <%= link_to 'Show', @car, :class => "btn btn-primary js-scroll-trigger" %>
+      <%= link_to 'Back', cars_path, :class => "btn btn-primary js-scroll-trigger" %>
+      <%= link_to 'Add New Owner', new_person_path(:car => @car), :class => "btn btn-primary js-scroll-trigger" %>
+    </div>
+  </div>
+</header>

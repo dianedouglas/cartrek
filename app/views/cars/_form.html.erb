@@ -17,32 +17,34 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :model %>
-    <%= form.text_field :model %>
+    <%= form.text_field :model, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :make %>
-    <%= form.text_field :make %>
+    <%= form.text_field :make, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :color %>
-    <%= form.text_field :color %>
+    <%= form.text_field :color, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :mileage %>
-    <%= form.number_field :mileage %>
+    <%= form.text_field :mileage, class: 'form-control', type: 'number' %>
   </div>
 
-  <div class="field">
-    <%= form.label :is_for_sale %>
-    <%= form.check_box :is_for_sale %>
+  <div class="form-check p-5">
+    <label for="is_for_sale" class="form-check-label mr-3">
+      For sale?
+    </label>
+    <%= form.check_box :is_for_sale, class: 'form-check-input' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save', :class => 'btn btn-primary' %>
   </div>
 <% end %>
