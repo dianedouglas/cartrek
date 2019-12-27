@@ -1,7 +1,9 @@
 <!-- Header -->
 <header class="masthead">
+  <div class="mx-auto text-center p-5">
+    <p id="notice" class="text-white"><%= notice %></p>
+  </div>
   <div class="container d-flex h-100 align-items-center">
-    <p id="notice"><%= notice %></p>
     <div class="mx-auto text-center">
       <h1 class="mx-auto my-0 p-5">Cars</h1>
       <%= link_to 'New Car', new_car_path, :class => "btn btn-primary js-scroll-trigger" %>

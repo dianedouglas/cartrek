@@ -1,47 +1,86 @@
-<p id="notice"><%= notice %></p>
+<header class="masthead">
+  <div class="mx-auto text-center p-5">
+    <p id="notice" class="text-white"><%= notice %></p>
+  </div>
 
-<p>
-  <strong>Model:</strong>
-  <%= @car.model %>
-</p>
+  <div class="container d-flex h-50 align-items-center">
 
-<p>
-  <strong>Make:</strong>
-  <%= @car.make %>
-</p>
 
-<p>
-  <strong>Color:</strong>
-  <%= @car.color %>
-</p>
+    <div class="mx-auto text-center">
+      <h1 class="mx-auto my-0 p-5">Car Details</h1>
+    </div>
 
-<p>
-  <strong>Mileage:</strong>
-  <%= @car.mileage %>
-</p>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Model</th>
+          <th scope="col">Make</th>
+          <th scope="col">Color</th>
+          <th scope="col">Mileage</th>
+          <th scope="col">For sale?</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<p>
-  <strong>Is for sale:</strong>
-  <%= @car.is_for_sale %>
-</p>
+      <tbody>
+        <tr>
+          <td><%= @car.model %></td>
+          <td><%= @car.make %></td>
+          <td><%= @car.color %></td>
+          <td><%= @car.mileage %></td>
+          <% if @car.is_for_sale %>
+            <td><span class="glyphicon glyphicon-ok"></span></td>
+          <% else %>
+            <td><span class="glyphicon glyphicon-remove"></span></td>
+          <% end %>
+          <td><%= link_to 'Edit', edit_car_path(@car) %></td>
+          <td><%= link_to 'Delete', @car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<%= link_to 'Edit', edit_car_path(@car) %> |
-<%= link_to 'Back', cars_path %>
 
-<p>
-  <strong>Ownership:</strong>
-</p>
+  <% if @car.people.count > 0 %>
+    <div class="container d-flex h-30 align-items-center">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 p-5">Ownership History</h1>
+        <%= link_to 'Add New Owner', new_person_path(:car => @car), :class => "btn btn-primary js-scroll-trigger"  %>
+      </div>
 
-<% @car.people.each do |owner| %>
-  <p>
-    <%= link_to owner.name, person_path(owner) %>
-  </p>
-  <p>
-    Email: <%= owner.email %>
-  </p>
-  <p>
-    Phone Number: <%= owner.phone_number %>
-  </p>
-<% end %>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Model</th>
+            <th scope="col">Make</th>
+            <th scope="col">Color</th>
+            <th scope="col">Mileage</th>
+            <th scope="col">For sale?</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<%= link_to 'Add New Owner', new_person_path(:car => @car) %>
+        <tbody>
+          <% @car.people.each do |person| %>
+            <tr>
+              <td><%= person.name %></td>
+              <td><%= person.email %></td>
+              <td><%= person.phone_number %></td>
+              <td><%= link_to 'Details', person %></td>
+              <td><%= link_to 'Edit', edit_person_path(person) %></td>
+              <td><%= link_to 'Delete', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="container d-flex h-30 align-items-center">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 p-5">No Owners Yet... New Car!</h1>
+        <%= link_to 'Add New Owner', new_person_path(:car => @car), :class => "btn btn-primary js-scroll-trigger"  %>
+      </div>
+    </div>
+  <% end %>
+
+</header>
