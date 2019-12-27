@@ -25,6 +25,36 @@ class CarsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
+  test "adding an ownership to a Car from edit" do
+    visit cars_url
+    click_on "Edit", match: :first
+    assert_text "Add New Owner"
+
+    click_on "Add New Owner"
+    assert_text "New Person"
+
+    fill_in "Email", with: 'testperson@gmail.com'
+    fill_in "Name", with: 'Test Person'
+    fill_in "Phone number", with: '123-456-7899'
+    click_on "Create Person"
+    assert_text "Owner was successfully created."
+  end
+
+  test "adding an ownership to a Car from show" do
+    visit cars_url
+    click_on "Show", match: :first
+    assert_text "Add New Owner"
+
+    click_on "Add New Owner"
+    assert_text "New Person"
+
+    fill_in "Email", with: 'testperson@gmail.com'
+    fill_in "Name", with: 'Test Person'
+    fill_in "Phone number", with: '123-456-7899'
+    click_on "Create Person"
+    assert_text "Owner was successfully created."
+  end
+
   test "updating a Car" do
     visit cars_url
     click_on "Edit", match: :first

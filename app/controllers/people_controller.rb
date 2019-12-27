@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
+  before_action :set_car, only: [:new, :create]
 
   # GET /people
   # GET /people.json
@@ -28,8 +29,14 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
-        format.json { render :show, status: :created, location: @person }
+        if @car
+          @person.cars << @car
+          format.html { redirect_to @car, notice: 'Owner was successfully created.' }
+          format.json { render :show, status: :created, location: @car }
+        else
+          format.html { redirect_to @person, notice: 'Person was successfully created.' }
+          format.json { render :show, status: :created, location: @person }
+        end
       else
         format.html { render :new }
         format.json { render json: @person.errors, status: :unprocessable_entity }
@@ -65,6 +72,10 @@ class PeopleController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_person
       @person = Person.find(params[:id])
+    end
+
+    def set_car
+      @car = Car.where(id: params['car']).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
