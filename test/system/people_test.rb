@@ -11,7 +11,7 @@ class PeopleTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit people_url
-    assert_selector "h1", text: "People"
+    assert_selector "h1", text: "Owners"
   end
 
   test "viewing a person with their cars" do
@@ -24,38 +24,35 @@ class PeopleTest < ApplicationSystemTestCase
 
   test "creating a Person" do
     visit people_url
-    click_on "New Person"
+    click_on "New Owner"
 
     fill_in "Email", with: @person.email
     fill_in "Name", with: @person.name
     fill_in "Phone number", with: @person.phone_number
-    click_on "Create Person"
+    click_on "Save"
 
     assert_text "Person was successfully created"
-    click_on "Back"
   end
 
   test "adding an ownership to a Person from edit" do
     visit people_url
     click_on "Edit", match: :first
-    assert_text "Add New Car"
 
     click_on "Add New Car"
     assert_text "New Car"
 
     fill_in "Color", with: 'Black'
-    check "Is for sale"
+    find('#car_is_for_sale').click
     fill_in "Make", with: 'Chevrolet'
     fill_in "Mileage", with: 1333333
     fill_in "Model", with: 'Impala'
-    click_on "Create Car"
+    click_on "Save"
     assert_text "#{@person.name} got a new car!"
   end
 
   test "adding an ownership to a Car from show" do
     visit people_url
-    click_on "Show", match: :first
-    assert_text "Add New Car"
+    click_on "Details", match: :first
 
     click_on "Add New Car"
     assert_text "New Car"
@@ -65,7 +62,7 @@ class PeopleTest < ApplicationSystemTestCase
     fill_in "Make", with: 'Chevrolet'
     fill_in "Mileage", with: 1333333
     fill_in "Model", with: 'Impala'
-    click_on "Create Car"
+    click_on "Save"
     assert_text "#{@person.name} got a new car!"
   end
 
@@ -76,16 +73,15 @@ class PeopleTest < ApplicationSystemTestCase
     fill_in "Email", with: @person.email
     fill_in "Name", with: @person.name
     fill_in "Phone number", with: @person.phone_number
-    click_on "Update Person"
+    click_on "Save"
 
     assert_text "Person was successfully updated"
-    click_on "Back"
   end
 
   test "destroying a Person" do
     visit people_url
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on "Delete", match: :first
     end
 
     assert_text "Person was successfully destroyed"
