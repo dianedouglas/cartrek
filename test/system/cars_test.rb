@@ -3,11 +3,25 @@ require "application_system_test_case"
 class CarsTest < ApplicationSystemTestCase
   setup do
     @car = cars(:one)
+    @person = people(:one)
+    @person2 = people(:two)
+    @car.people << @person
+    @car.people << @person2
   end
 
   test "visiting the index" do
     visit cars_url
     assert_selector "h1", text: "Cars"
+  end
+
+  test "viewing a car with its ownership" do
+    visit car_url(@car)
+    assert_text @person.name
+    assert_text @person.email
+    assert_text @person.phone_number
+    assert_text @person2.name
+    assert_text @person2.email
+    assert_text @person2.phone_number
   end
 
   test "creating a Car" do
