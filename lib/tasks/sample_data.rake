@@ -1,6 +1,9 @@
 namespace :cartrek do
   desc "Create basic sample data for app"
   task sample_data: :environment do
+    Ownership.delete_all
+    Car.delete_all
+    Person.delete_all
     cars = {}
     people = {}
 
@@ -26,7 +29,7 @@ namespace :cartrek do
       model: "Lotus",
       make: "Evora",
       color: "Yellow",
-      mileage: 0,
+      mileage: 330,
       is_for_sale: true
     )
     cars[:lotus] = car
