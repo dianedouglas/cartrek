@@ -49,7 +49,7 @@ class PeopleTest < ApplicationSystemTestCase
     fill_in "Mileage", with: 1333333
     fill_in "Model", with: 'Impala'
     click_on "Create Car"
-    assert_text "Car was successfully created."
+    assert_text "#{@person.name} got a new car!"
   end
 
   test "adding an ownership to a Car from show" do
@@ -66,7 +66,7 @@ class PeopleTest < ApplicationSystemTestCase
     fill_in "Mileage", with: 1333333
     fill_in "Model", with: 'Impala'
     click_on "Create Car"
-    assert_text "Car was successfully created."
+    assert_text "#{@person.name} got a new car!"
   end
 
   test "updating a Person" do

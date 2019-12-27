@@ -1,4 +1,10 @@
 <%= form_with(model: car, local: true) do |form| %>
+
+  <% if @person %>
+    <%= hidden_field_tag 'person', @person.id %>
+  <% end %>
+
+
   <% if car.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
