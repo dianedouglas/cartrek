@@ -83,5 +83,7 @@ namespace :cartrek do
     Ownership.create(car: cars[:impala], person: people[:dean])
     Ownership.create(car: cars[:bmw], person: people[:kirk])
     Ownership.create(car: cars[:charger], person: people[:picard])
+
+    puts "Sample Data completed."
   end
 end
