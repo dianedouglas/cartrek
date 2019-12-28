@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::Base
-  http_basic_authenticate_with name: 'cars', password: 'thrive'
+  include HttpAuthConcern
 end
