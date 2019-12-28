@@ -28,9 +28,9 @@
             <td><%= car.color %></td>
             <td><%= car.mileage %></td>
             <% if car.is_for_sale %>
-              <td><span class="glyphicon glyphicon-ok"></span></td>
+              <td><%= material_icon.check %></td>
             <% else %>
-              <td><span class="glyphicon glyphicon-remove"></span></td>
+              <td><%= material_icon.close %></td>
             <% end %>
             <td><%= link_to 'Details', car %></td>
             <td><%= link_to 'Edit', edit_car_path(car) %></td>
