@@ -13,6 +13,8 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
-//= require jquery3
-//= require bootstrap
+
+//= require vendor/jquery.js
+//= require vendor/bootstrap.bundle.js
+//= require vendor/jquery.easing.js
+//= require main.js

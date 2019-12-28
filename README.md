@@ -59,7 +59,7 @@ bin/rails test:system test
 ## Technologies Used
 
 * Ruby on Rails 5
-* Bootstrap/SASS
-* Minitest/Capybara/Selenium
+* Bootstrap, SASS, jQuery
+* Minitest, Capybara, Selenium
 
 Copyright (c) 2019 **Diane Douglas**
