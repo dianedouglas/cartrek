@@ -8,6 +8,17 @@
 
 This app demonstrates a has_many_through relationship between Cars and People through Ownerships. A car potentially has a history of many owners, and a person can own many cars. We join together the foreign key of a car with that of an owner through the Ownerships table.
 
+## Try It Out Live
+
+Deployed to Heroku: #### [Car Trek](https://quiet-beach-53235.herokuapp.com/)
+
+Included Basic Auth:
+
+```
+Username: cars
+Password: thrive
+```
+
 ## Setup/Installation Requirements
 
 1. Clone or download this repository, then change directory into the project folder.
