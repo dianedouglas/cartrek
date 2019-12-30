@@ -88,4 +88,11 @@ class CarsTest < ApplicationSystemTestCase
 
     assert_text "Car deleted!"
   end
+
+  test "sorting cars" do
+    visit cars_url
+    assert_text "Chevrolet Impala Black 100000 close #{Time.now.strftime("%m-%d-%Y")} Details Edit Delete"
+    click_on "Model"
+    assert_text "Dodge Charger Red 3000 check #{Time.now.strftime("%m-%d-%Y")} Details Edit Delete\nChevrolet Impala Black 100000 close #{Time.now.strftime("%m-%d-%Y")} Details Edit Delete"
+  end
 end

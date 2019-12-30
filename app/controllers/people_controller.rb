@@ -1,11 +1,12 @@
 class PeopleController < ApplicationController
+  helper_method :sort_column, :sort_direction
   before_action :set_person, only: [:show, :edit, :update, :destroy]
   before_action :set_car, only: [:new, :create]
 
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.order(sort_column + " " + sort_direction)
   end
 
   # GET /people/1
@@ -81,5 +82,16 @@ class PeopleController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
       params.require(:person).permit(:name, :email, :phone_number)
+    end
+
+    def sort_direction
+      # set default sort to ascending. 
+      # Otherwise set it to the direction param if it is either asc or desc
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+    def sort_column
+      # sort by name by default.
+      Person.column_names.include?(params[:sort]) ? params[:sort] : "name"
     end
 end

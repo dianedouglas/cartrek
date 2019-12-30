@@ -10,7 +10,7 @@ This app demonstrates a has_many_through relationship between Cars and People th
 
 ## Try It Out Live
 
-Deployed to Heroku: #### [Car Trek](https://quiet-beach-53235.herokuapp.com/)
+#### Deployed to Heroku: [Car Trek](https://quiet-beach-53235.herokuapp.com/)
 
 Included Basic Auth:
 

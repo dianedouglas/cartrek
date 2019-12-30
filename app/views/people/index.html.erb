@@ -3,34 +3,36 @@
     <p id="notice" class="text-white"><%= notice %></p>
   </div>
   <div class="container d-flex h-100 align-items-center">
-
-    <div class="mx-auto text-center">
-      <h1 class="mx-auto my-0 p-5">Owners</h1>
-      <%= link_to 'New Owner', new_person_path, :class => "btn btn-primary js-scroll-trigger" %>
+    <div class="p2 col-6">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 p-5">Owners</h1>
+        <%= link_to 'New Owner', new_person_path, :class => "btn btn-primary js-scroll-trigger" %>
+      </div>
     </div>
-
-    <table class="table table-dark">
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Phone number</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @people.each do |person| %>
+    <div class="p2 col-10">
+      <table class="table table-dark">
+        <thead>
           <tr>
-            <td><%= person.name %></td>
-            <td><%= person.email %></td>
-            <td><%= person.phone_number %></td>
-            <td><%= link_to 'Details', person %></td>
-            <td><%= link_to 'Edit', edit_person_path(person) %></td>
-            <td><%= link_to 'Delete', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th scope="col"><%= sortable "name" %><%= sort_icon "name" %></th>
+            <th scope="col"><%= sortable "email" %><%= sort_icon "email" %></th>
+            <th scope="col">Phone number</th>
+            <th scope="col"><%= sortable "created_at" %><%= sort_icon "created_at" %></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @people.each do |person| %>
+            <tr>
+              <td><%= person.name %></td>
+              <td><%= person.email %></td>
+              <td><%= person.phone_number %></td>
+              <td><%= person.created_at.strftime("%m-%d-%Y")%></td>
+              <td><%= link_to 'Details', person %></td>
+              <td><%= link_to 'Edit', edit_person_path(person) %></td>
+              <td><%= link_to 'Delete', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </header>

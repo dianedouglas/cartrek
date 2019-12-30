@@ -3,41 +3,45 @@
   <div class="mx-auto text-center p-5">
     <p id="notice" class="text-white"><%= notice %></p>
   </div>
-  <div class="container d-flex h-100 align-items-center">
-    <div class="mx-auto text-center">
-      <h1 class="mx-auto my-0 p-5">Cars</h1>
-      <%= link_to 'New Car', new_car_path, :class => "btn btn-primary js-scroll-trigger" %>
+  <div class="container d-flex flex-row h-100 align-items-center">
+    <div class="p2 col=6">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 p-5">Cars</h1>
+        <%= link_to 'New Car', new_car_path, :class => "btn btn-primary js-scroll-trigger" %>
+      </div>
     </div>
-    <table class="table table-dark">
-      <thead>
-        <tr>
-          <th scope="col">Model</th>
-          <th scope="col">Make</th>
-          <th scope="col">Color</th>
-          <th scope="col">Mileage</th>
-          <th scope="col">For sale?</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @cars.each do |car| %>
+    <div class="p2 col=10">
+      <table class="table table-dark">
+        <thead>
           <tr>
-            <td><%= car.model %></td>
-            <td><%= car.make %></td>
-            <td><%= car.color %></td>
-            <td><%= car.mileage %></td>
-            <% if car.is_for_sale %>
-              <td><%= material_icon.check %></td>
-            <% else %>
-              <td><%= material_icon.close %></td>
-            <% end %>
-            <td><%= link_to 'Details', car %></td>
-            <td><%= link_to 'Edit', edit_car_path(car) %></td>
-            <td><%= link_to 'Delete', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th scope="col"><%= sortable "model" %><%= sort_icon "model" %></th>
+            <th scope="col"><%= sortable "make" %><%= sort_icon "make" %></th>
+            <th scope="col"><%= sortable "color" %><%= sort_icon "color" %></th>
+            <th scope="col"><%= sortable "mileage" %><%= sort_icon "mileage" %></th>
+            <th scope="col"><%= sortable "is_for_sale" %><%= sort_icon "is_for_sale" %></th>
+            <th scope="col"><%= sortable "created_at" %><%= sort_icon "created_at" %></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @cars.each do |car| %>
+            <tr>
+              <td><%= car.model %></td>
+              <td><%= car.make %></td>
+              <td><%= car.color %></td>
+              <td><%= car.mileage %></td>
+              <% if car.is_for_sale %>
+                <td><%= material_icon.check %></td>
+              <% else %>
+                <td><%= material_icon.close %></td>
+              <% end %>
+              <td class="col-2"><%= car.created_at.strftime("%m-%d-%Y")%></td>
+              <td><%= link_to 'Details', car %></td>
+              <td><%= link_to 'Edit', edit_car_path(car) %></td>
+              <td><%= link_to 'Delete', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </header>

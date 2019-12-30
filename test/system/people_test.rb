@@ -47,7 +47,7 @@ class PeopleTest < ApplicationSystemTestCase
     fill_in "Mileage", with: 1333333
     fill_in "Model", with: 'Impala'
     click_on "Save"
-    assert_text "#{@person.name} got a new car!"
+    assert_text "A Moose got a new car!"
   end
 
   test "adding an ownership to a Car from show" do
@@ -63,7 +63,7 @@ class PeopleTest < ApplicationSystemTestCase
     fill_in "Mileage", with: 1333333
     fill_in "Model", with: 'Impala'
     click_on "Save"
-    assert_text "#{@person.name} got a new car!"
+    assert_text "A Moose got a new car!"
   end
 
   test "updating a Person" do
@@ -85,5 +85,12 @@ class PeopleTest < ApplicationSystemTestCase
     end
 
     assert_text "Person was successfully destroyed"
+  end
+
+  test "sorting people" do
+    visit people_url
+    assert_text "A Moose moose@gmail.com 321-432-6543 #{Time.now.strftime("%m-%d-%Y")} Details Edit Delete\nDiane Douglas diane.douglas1@gmail.com 555-123-4567 #{Time.now.strftime("%m-%d-%Y")} Details Edit Delete"
+    click_on "Name"
+    assert_text "Diane Douglas diane.douglas1@gmail.com 555-123-4567 #{Time.now.strftime("%m-%d-%Y")} Details Edit Delete\nA Moose moose@gmail.com 321-432-6543 #{Time.now.strftime("%m-%d-%Y")} Details Edit Delete\n"
   end
 end

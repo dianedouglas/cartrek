@@ -1,11 +1,12 @@
 class CarsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   before_action :set_car, only: [:show, :edit, :update, :destroy]
   before_action :set_person, only: [:new, :create]
 
   # GET /cars
   # GET /cars.json
   def index
-    @cars = Car.all
+    @cars = Car.order(sort_column + " " + sort_direction)
   end
 
   # GET /cars/1
@@ -81,5 +82,16 @@ class CarsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
       params.require(:car).permit(:model, :make, :color, :mileage, :is_for_sale)
+    end
+
+    def sort_direction
+      # set default sort to ascending. 
+      # Otherwise set it to the direction param if it is either asc or desc
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+    def sort_column
+      # sort by model by default.
+      Car.column_names.include?(params[:sort]) ? params[:sort] : "model"
     end
 end
