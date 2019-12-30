@@ -89,8 +89,8 @@ class PeopleTest < ApplicationSystemTestCase
 
   test "sorting people" do
     visit people_url
-    assert_text "A Moose moose@gmail.com 321-432-6543 #{Time.now.strftime("%m-%d-%Y")} Details Edit Delete\nDiane Douglas diane.douglas1@gmail.com 555-123-4567 #{Time.now.strftime("%m-%d-%Y")} Details Edit Delete"
+    assert_text "A Moose moose@gmail.com 321-432-6543 Details Edit Delete\nDiane Douglas diane.douglas1@gmail.com 555-123-4567 Details Edit Delete"
     click_on "Name"
-    assert_text "Diane Douglas diane.douglas1@gmail.com 555-123-4567 #{Time.now.strftime("%m-%d-%Y")} Details Edit Delete\nA Moose moose@gmail.com 321-432-6543 #{Time.now.strftime("%m-%d-%Y")} Details Edit Delete\n"
+    assert_text "Diane Douglas diane.douglas1@gmail.com 555-123-4567 Details Edit Delete\nA Moose moose@gmail.com 321-432-6543 Details Edit Delete\n"
   end
 end

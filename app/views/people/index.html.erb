@@ -16,7 +16,6 @@
             <th scope="col"><%= sortable "name" %><%= sort_icon "name" %></th>
             <th scope="col"><%= sortable "email" %><%= sort_icon "email" %></th>
             <th scope="col">Phone number</th>
-            <th scope="col"><%= sortable "created_at" %><%= sort_icon "created_at" %></th>
           </tr>
         </thead>
         <tbody>
@@ -25,7 +24,6 @@
               <td><%= person.name %></td>
               <td><%= person.email %></td>
               <td><%= person.phone_number %></td>
-              <td><%= person.created_at.strftime("%m-%d-%Y")%></td>
               <td><%= link_to 'Details', person %></td>
               <td><%= link_to 'Edit', edit_person_path(person) %></td>
               <td><%= link_to 'Delete', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
